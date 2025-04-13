@@ -1,5 +1,6 @@
 // server.js
 require('dotenv').config();
+const path = require('path'); // Added path module
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
@@ -16,6 +17,9 @@ mongoose
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
+
+// Explicit views directory configuration (CRUCIAL FIX)
+app.set('views', path.join(__dirname, 'views')); // Added this line
 app.set('view engine', 'ejs');
 
 // Session configuration with connect-mongo
@@ -26,7 +30,6 @@ app.use(
     saveUninitialized: false,
     store: MongoStore.create({
       mongoUrl: process.env.MONGO_URI,
-      // Other options if needed
     })
   })
 );
