@@ -1,0 +1,16 @@
+<%- include('partials/header') %>
+<h2>User Registration</h2>
+<% if (typeof error !== 'undefined' && error) { %>
+  <p style="color:red;"><%= error %></p>
+<% } %>
+<form action="/user/register" method="POST">
+  <label>Username:</label>
+  <input type="text" name="username" required /><br/>
+  <label>Email:</label>
+  <input type="email" name="email" required /><br/>
+  <label>Password:</label>
+  <input type="password" name="password" required /><br/>
+  <button type="submit">Register</button>
+</form>
+<p>Already have an account? <a href="/user/login">Login here</a></p>
+<%- include('partials/footer') %>

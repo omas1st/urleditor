@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= typeof title !== 'undefined' ? title : 'URL Shortener' %></title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>URL Shortener</h1>
+      <% if (session && session.admin) { %>
+        <nav>
+          <a href="/admin/dashboard">Dashboard</a> |
+          <a href="/admin/users">Users</a> |
+          <a href="/admin/urls">URLs</a> |
+          <a href="/admin/logout">Logout</a>
+        </nav>
+      <% } else if (session && session.user) { %>
+        <nav>
+          <a href="/user/dashboard">Dashboard</a> |
+          <a href="/user/logout">Logout</a>
+        </nav>
+      <% } else { %>
+        <nav>
+          <a href="/user/login">User Login</a> |
+          <a href="/user/register">Register</a>
+        </nav>
+      <% } %>
+    </header>
+    <main>

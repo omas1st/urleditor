@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+<h2>Manage URLs</h2>
+<table border="1">
+  <tr>
+    <th>Original URL</th>
+    <th>Short Code</th>
+    <th>Clicks</th>
+    <th>Actions</th>
+  </tr>
+  <% urls.forEach(function(url) { %>
+    <tr>
+      <td><%= url.originalUrl %></td>
+      <td><%= url.shortCode %></td>
+      <td><%= url.clicks %></td>
+      <td>
+        <form action="/admin/urls/edit/<%= url._id %>" method="POST" style="display:inline;">
+          <input type="text" name="originalUrl" value="<%= url.originalUrl %>" required />
+          <button type="submit">Update</button>
+        </form>
+        <form action="/admin/urls/delete/<%= url._id %>" method="POST" style="display:inline;">
+          <button type="submit">Delete</button>
+        </form>
+        <a href="/admin/urls/<%= url._id %>/stats">Stats</a>
+      </td>
+    </tr>
+  <% }); %>
+</table>
+<%- include('partials/footer') %>

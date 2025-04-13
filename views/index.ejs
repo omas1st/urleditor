@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+<h2>Create a Short URL</h2>
+<% if (error) { %>
+  <p style="color:red;"><%= error %></p>
+<% } %>
+<form action="/shorten" method="POST">
+  <label>Original URL:</label>
+  <input type="url" name="originalUrl" required />
+  <br/>
+  <label>Custom Short Code (Optional):</label>
+  <input type="text" name="customCode" placeholder="e.g., mylink" />
+  <br/>
+  <button type="submit">Shorten</button>
+</form>
+
+<% if (typeof shortUrl !== 'undefined') { %>
+  <p>Your short URL: <a href="http://<%= shortUrl %>"><%= shortUrl %></a></p>
+<% } %>
+<%- include('partials/footer') %>
