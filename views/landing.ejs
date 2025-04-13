@@ -1,9 +1,12 @@
 <%- include('partials/header') %>
-<h2>Welcome to the URL Shortener</h2>
-<p>Please choose an option:</p>
-<ul>
-  <li><a href="/user/login">User Login</a></li>
-  <li><a href="/user/register">User Registration</a></li>
-  <li><a href="/admin/login">Admin Login</a></li>
-</ul>
+<div class="card">
+  <h2>Welcome to URL Shortener</h2>
+  <p class="text-lg mt-4">Get started with our services:</p>
+  
+  <div class="mt-6 grid gap-4">
+    <a href="/user/login" class="btn btn-primary">User Login</a>
+    <a href="/user/register" class="btn btn-primary">User Registration</a>
+    <a href="/admin/login" class="btn btn-primary">Admin Login</a>
+  </div>
+</div>
 <%- include('partials/footer') %>
